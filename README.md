@@ -21,32 +21,32 @@ A client for the Enlightenment Sound Daemon (ESD, JEsd), serves /dev/audio and /
 
 A clone of Enlightenment Sound Daemon (ESD, JEsd); The implementation is almost complete, but i don't feel like finishing it yet (07/28/2003), so i'm posting the source anyway.
 
-- <./esd.b>
-- <./esd.m>  (p. stanley-marbell, contact)
+- [esd.b](./esd.b)
+- [esd.m](./esd.m)  (p. stanley-marbell, contact)
 
 ### postscanner
 
 A port scanner
 
-- <./portscanner.b>  (p. stanley-marbell, contact)
+- [portscanner.b](./portscanner.b)  (p. stanley-marbell, contact)
 
 ### banner
 
 A semi-clone of the Unix banner(1); Works well with cb (see below)
 
-- <./banner.b>  (p. stanley-marbell, contact)
+- [banner.b](./banner.b)  (p. stanley-marbell, contact)
 
 ### cb
 
 Turn any text, images, program, audio, etc., into an image; Works well with banner (see above)
 
-- <./cb.b>  (p. stanley-marbell, contact)
+- [cb.b](./cb.b>)  (p. stanley-marbell, contact)
 
 ### unroll
 
 Unrolls a text file into characters, one per line
 
-- <./unroll.b>  (p. stanley-marbell, contact)
+- [unroll.b](./unroll.b)  (p. stanley-marbell, contact)
 
 ### transprob
 
@@ -58,13 +58,13 @@ Example:
 
 This will output the transition probability matrix for values in the second column of the file q.data going from all combinations of 0..8 to 0..8.
 
-- <./transprob.b>  (p. stanley-marbell, contact)
+- [transprob.b](./transprob.b)  (p. stanley-marbell, contact)
 
 ### webview
 
 Pull down a URL, and make a quick attempt at rendering it as plain text
 
-- <./webview.b>  (p. stanley-marbell, contact)
+- [webview.b](./webview.b)  (p. stanley-marbell, contact)
 
 ### match
 
@@ -77,4 +77,4 @@ e.g.:
 	[}]     218 occurences
 
 
-- <./match.b>  (p. stanley-marbell, contact)
+- [match.b](./match.b)  (p. stanley-marbell, contact)

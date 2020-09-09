@@ -1,0 +1,73 @@
+#
+#       Software from the book "Inferno Programming with Limbo"
+#       published by John Wiley & Sons, January 2003.
+#
+#       p. Stanley-Marbell <pip@gemusehaken.org>
+#
+#define	NUMCHANS	6
+#define	NUMSLAVES	5
+#define SAMPLEDCHAN	5
+
+
+/*		Message Types:			*/
+mtype = {SAMPLE, SAMPLED};
+
+/*	Synchronous Communication Medium:	*/
+chan netseg[NUMCHANS] = [0] of {mtype};
+
+proctype slave(byte my_id)
+{
+	byte	got_sample;
+
+	got_sample = 0;
+	printf("Node %d startup\n", my_id);
+
+	do
+		/*	Wait for message type 'SAMPLE'		*/
+	::	netseg[my_id]?SAMPLE ->
+			got_sample = 1;
+		
+	::	got_sample ->
+			/*	Send a 'SAMPLED' message	*/
+			netseg[SAMPLEDCHAN]!SAMPLED;
+			got_sample = 0;
+	od
+}
+
+proctype master()
+{
+	byte	nreceipts, nsent, nperiods;
+
+	nperiods = 0;
+	printf("Master started up\n");
+
+	do
+	::	((nreceipts % NUMSLAVES) == 0) ->
+			nreceipts = 0;
+			nsent = 0;
+
+			do
+			::	nsent < NUMSLAVES ->
+					netseg[nsent]!SAMPLE;
+					nsent++;
+			::	nsent == NUMSLAVES ->
+				nperiods++;
+				break;
+			od
+
+	::	netseg[SAMPLEDCHAN]?SAMPLED ->
+			nreceipts++;
+	od
+}
+
+/*		Initial process creates processes	*/
+init
+{
+	run slave(0);
+	run slave(1);
+	run slave(2);
+	run slave(3);
+	run slave(4);
+
+	run master();
+}
